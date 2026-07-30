@@ -7,6 +7,7 @@ import type {
   MaybeComputedMenuBarContent,
   MenuBarContent,
 } from "@/components/Menu/MenuBar/menuBarData";
+import { t } from '@/hc-strings'; // hc-voicevox string localization
 
 export const useMenuBarData = (store: Store): MaybeComputedMenuBarContent => {
   const uiLocked = computed(() => store.getters.UI_LOCKED);
@@ -64,7 +65,8 @@ export const useMenuBarData = (store: Store): MaybeComputedMenuBarContent => {
     audioExport: [
       {
         type: "button",
-        label: "音声書き出し",
+        //label: "音声書き出し",
+        label: t("action.export_song"),
         onClick: () => {
           void exportAudioFile();
         },
@@ -72,7 +74,8 @@ export const useMenuBarData = (store: Store): MaybeComputedMenuBarContent => {
       },
       {
         type: "button",
-        label: "labファイルを書き出し",
+        //label: "labファイルを書き出し",
+        label: t("action.export_song_labels"),
         onClick: () => {
           void exportLabelFile();
         },
@@ -82,7 +85,8 @@ export const useMenuBarData = (store: Store): MaybeComputedMenuBarContent => {
     externalProject: [
       {
         type: "button",
-        label: "プロジェクトをインポート",
+        //label: "プロジェクトをインポート",
+        label: t("action.import_song_other"),
         onClick: () => {
           void importExternalSongProject();
         },
@@ -90,7 +94,8 @@ export const useMenuBarData = (store: Store): MaybeComputedMenuBarContent => {
       },
       {
         type: "root",
-        label: "プロジェクトをエクスポート",
+        //label: "プロジェクトをエクスポート",
+        label: t("action.export_song_other"),
         subMenu: (
           [
             ["smf", "MIDI (SMF)"],
@@ -116,7 +121,8 @@ export const useMenuBarData = (store: Store): MaybeComputedMenuBarContent => {
     copyPaste: [
       {
         type: "button",
-        label: "コピー",
+        //label: "コピー",
+        label: t("action.copy_notes"),
         onClick: () => {
           if (uiLocked.value) return;
           void store.actions.COPY_NOTES_TO_CLIPBOARD();
@@ -126,7 +132,8 @@ export const useMenuBarData = (store: Store): MaybeComputedMenuBarContent => {
       },
       {
         type: "button",
-        label: "切り取り",
+        //label: "切り取り",
+        label: t("action.cut_notes"),
         onClick: () => {
           if (uiLocked.value) return;
           void store.actions.COMMAND_CUT_NOTES_TO_CLIPBOARD();
@@ -136,7 +143,8 @@ export const useMenuBarData = (store: Store): MaybeComputedMenuBarContent => {
       },
       {
         type: "button",
-        label: "貼り付け",
+        //label: "貼り付け",
+        label: t("action.paste_notes"),
         onClick: () => {
           if (uiLocked.value) return;
           void store.actions.COMMAND_PASTE_NOTES_FROM_CLIPBOARD();
@@ -147,7 +155,8 @@ export const useMenuBarData = (store: Store): MaybeComputedMenuBarContent => {
     select: [
       {
         type: "button",
-        label: "すべて選択",
+        //label: "すべて選択",
+        label: t("action.select_all_notes_in_track"),
         onClick: () => {
           if (uiLocked.value) return;
           void store.actions.SELECT_ALL_NOTES_IN_TRACK({
@@ -158,7 +167,8 @@ export const useMenuBarData = (store: Store): MaybeComputedMenuBarContent => {
       },
       {
         type: "button",
-        label: "選択解除",
+        //label: "選択解除",
+        label: t("action.deselect_all_notes"),
         onClick: () => {
           if (uiLocked.value) return;
           void store.actions.DESELECT_ALL_NOTES();
@@ -169,7 +179,8 @@ export const useMenuBarData = (store: Store): MaybeComputedMenuBarContent => {
     misc: [
       {
         type: "button",
-        label: "クオンタイズ",
+        //label: "クオンタイズ",
+        label: t("action.quantize_selected_notes"),
         onClick: () => {
           if (uiLocked.value) return;
           void store.actions.COMMAND_QUANTIZE_SELECTED_NOTES();
@@ -187,8 +198,10 @@ export const useMenuBarData = (store: Store): MaybeComputedMenuBarContent => {
       {
         type: "button",
         label: showSingCharacterPortrait.value
-          ? "立ち絵を非表示"
-          : "立ち絵を表示",
+          //? "立ち絵を非表示"
+          //: "立ち絵を表示",
+          ? t("action.hide_character_portrait")
+          : t("action.show_character_portrait"),
         onClick: () => {
           setShowSingCharacterPortrait(!showSingCharacterPortrait.value);
         },

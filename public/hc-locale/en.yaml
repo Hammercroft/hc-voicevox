@@ -1,0 +1,129 @@
+# Hammercroft's English VOICEVOX localization file
+
+# this file was started during the time when 0.25.1 was the latest release.
+# some of the keys no longer exactly matched the interface semantics in 0.25.2, and this 
+# regression might also be expected to continue in future releases.
+
+# ============================================================
+# MENU BAR
+# ============================================================
+
+# Top-level menu bar entries
+menu_bar.file: File
+menu_bar.edit: Edit
+menu_bar.view: View
+menu_bar.engine: Engine
+menu_bar.settings: Settings
+menu_bar.help: Help
+
+# Editor switcher (Talk / Sing toggle)
+menu_bar.editor_switcher.talk_option: Talk
+menu_bar.editor_switcher.sing_option: Sing
+
+
+# ============================================================
+# ACTIONS
+# Actions are strings that may appear in two or more of:
+#   - Menu Bar
+#   - Tool Bar / any utility-oriented palette
+#   - Context Menu
+#   - Keybinds
+# ============================================================
+
+# File
+action.create_new_project: Create New Project
+action.save_project: Save Project
+action.save_project_as: Save Project As
+action.save_project_copy: Save A Copy
+action.import_project: Import Project
+
+# View
+action.toggle_fullscreen: Toggle Fullscreen
+action.zoom_in: Zoom In
+action.zoom_out: Zoom Out
+action.zoom_reset: Reset Zoom
+action.hide_character_portrait: Hide Character Portrait
+action.show_character_portrait: Show Character Portrait
+
+# Edit
+action.undo: Undo
+action.redo: Redo
+action.set_selected_audio_keys: Select All
+action.copy_notes: Copy # song musical notes
+action.cut_notes: Cut # song musical notes
+action.paste_notes: Paste # song musical notes
+action.select_all_notes_in_track: Select All # song musical notes
+action.deselect_all_notes: Deselect All # song musical notes
+action.quantize_selected_notes: Quantize Selection # song musical notes
+
+# Export / Import
+## song interface
+action.export_song: Render/Export Project
+action.export_song_labels: Export Labels (.lab)
+action.export_song_other: Export As Other Format
+action.import_song_other: Import Other Project # pertaining to projects made in other software
+
+# ============================================================
+# SINGING INTERFACE
+# NOTE: The VOICEVOX UI reserves a compact amount of space for the
+#       labels in this interface -- KEEP THEM SHORT!
+# ============================================================
+
+# NOTE: The original Japanese source erroneously (or colloquially) labels 音域 (On'iki) as "key" in code.
+#       It has been corrected here to reflect its actual meaning (timbre/vocal register).
+singing_interface.timbre_label: Timbre
+singing_interface.loudness_label: Power # voice synthesis loudness/intensity; distinct from track volume/gain
+singing_interface.tempo_label: BPM
+singing_interface.time_signature_label: Rhythm
+singing_interface.snap_type_select_label: Snap
+
+# ============================================================
+# MISCELLANEOUS
+# NOTE: This section is temporary. Keys should be moved to
+#       their own sections as the locale file grows.
+#
+# NOTE: `menu_label` keys must work in both contexts:
+#   - As a navigation entry label (e.g. as a menu bar entry)
+#   - As a dialog or window title
+# Keep values concise enough to serve both roles.
+# ============================================================
+
+recent_projects.menu_label: Recent Projects
+recent_projects.no_recent_projects: (No recent projects)
+
+hotkeys.menu_label: Hotkeys
+toolbar_settings.menu_label: Toolbar Customization
+character_list.menu_label: Characters and Styles
+legacy_character_list.menu_label: Character Arrangement
+legacy_default_style_menu.menu_label: Character Style Defaults
+dictionary.menu_label: Dictionary
+configuration.menu_label: Configuration
+
+# keys with both UI and non-UI use...
+general.default_track_name: Unnamed Track # Used in track conversion / (de)serialization
+
+# ============================================================
+# NAME ATTRIBUTE
+# (items that appear as `name` attributes in  source code)
+#
+# They are used as both enums/identifiers, and on the original
+# VOICEVOX code, they are also used as display labels.
+#
+# Name attribute display labels are localized here.
+#
+# NOTE TODO FIND A WAY FOR THE JAPANESE LOCALE HANDLING TO IGNORE THIS
+# ============================================================
+
+name_attribute.x: exampleattr
+
+# ============================================================
+# DOM MUTATION REPLACEMENTS
+#
+# Intercepts and replaces strings injected into the DOM at
+# runtime — primarily character names and style labels sourced
+# from VOICEVOX's remote character database.
+# ============================================================
+
+mutation_replacements:
+    # Characters
+    "波音リツ": "Namine Ritsu"

@@ -118,6 +118,7 @@ export default defineConfig((options) => {
     },
     plugins: [
       vue(),
+      localeWatchPlugin(), // hc-voicevox 
       quasar({ autoImportComponentCase: "pascal" }),
       isElectron && [
         cleanDistPlugin(),
@@ -347,6 +348,22 @@ const checkSuspiciousImportsPlugin = (
         }
       }
       checkSuspiciousImports(files, options);
+    },
+  };
+};
+
+// for refreshing the page when locale files are changed during development
+const localeWatchPlugin = (): Plugin => {
+  const localeDir = path.resolve(import.meta.dirname, "public/hc-locale");
+  return {
+    name: "locale-watch-reload",
+    configureServer(server) {
+      server.watcher.add(localeDir);
+      server.watcher.on("change", (file) => {
+        if (file.startsWith(localeDir)) {
+          server.ws.send({ type: "full-reload" });
+        }
+      });
     },
   };
 };

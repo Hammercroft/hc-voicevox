@@ -7,6 +7,7 @@ import type {
 import type { MenuItemData } from "@/components/Menu/type";
 import type { Store } from "@/store";
 import { removeNullableAndBoolean } from "@/helpers/arrayHelper";
+import { t } from '@/hc-strings'; // hc-voicevox string localization
 
 export const useElectronMenuBarData = (
   store: Store,
@@ -22,13 +23,14 @@ export const useElectronMenuBarData = (
   });
 
   // 「エンジン」メニューのエンジン毎の項目
+  // engine menu items
   const engineSubMenuData = computed<MenuBarContent["engine"]>(() => {
     let singleEngineSubMenuData: MenuItemData[];
     if (Object.values(engineInfos.value).length === 1) {
       singleEngineSubMenuData = [
         {
           type: "button",
-          label: "再起動",
+          label: t("menuBar.engine.restartEngine"),
           onClick: () => {
             void store.actions.RESTART_ENGINES({
               engineIds: [engineIds.value[0]],

@@ -9,6 +9,7 @@ import {
   type SandboxWithTransferableResult,
 } from "./backendApiLoader";
 import type { ConfigType, EngineId, Sandbox } from "@/type/preload";
+import "./hc-mutation-observer.js";
 
 const ipcRendererInvokeProxy = new Proxy(
   {},

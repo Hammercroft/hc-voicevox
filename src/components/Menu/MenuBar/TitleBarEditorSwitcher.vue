@@ -5,7 +5,7 @@
 <template>
   <!-- FIXME: 画面サイズが小さくなると表示が崩れるのを直す -->
   <!-- NOTE: デザインしづらいからQBtnかdivの方が良い -->
-  <QBtnToggle
+  <!-- QBtnToggle
     :modelValue="openedEditor"
     unelevated
     :disable="uiLocked"
@@ -16,6 +16,18 @@
       { label: 'ソング', value: 'song' },
     ]"
     @update:modelValue="switchEditor"
+  /-->
+  <QBtnToggle
+    :modelValue="openedEditor"
+    unelevated
+    :disable="uiLocked"
+    dense
+    toggleColor="primary"
+    :options="[
+      { label: t('menu_bar.editor_switcher.talk_option'), value: 'talk' },
+      { label: t('menu_bar.editor_switcher.sing_option'), value: 'song' },
+    ]"
+    @update:modelValue="switchEditor"
   />
 </template>
 
@@ -23,6 +35,7 @@
 import { computed } from "vue";
 import { useStore } from "@/store";
 import type { EditorType } from "@/type/preload";
+import { t } from '@/hc-strings'; // hc-voicevox string localization
 
 const store = useStore();
 

@@ -1,353 +1,126 @@
-# VOICEVOX
+# hc-voicevox / Hammercroft's English VOICEVOX
 
-[![releases](https://img.shields.io/github/v/release/VOICEVOX/voicevox?label=Release)](https://github.com/VOICEVOX/voicevox/releases)
-[![build](https://github.com/VOICEVOX/voicevox/actions/workflows/build.yml/badge.svg)](https://github.com/VOICEVOX/voicevox/actions/workflows/build.yml)
-[![test](https://github.com/VOICEVOX/voicevox/actions/workflows/test.yml/badge.svg)](https://github.com/VOICEVOX/voicevox/actions/workflows/test.yml)
-[![Discord](https://img.shields.io/discord/879570910208733277?color=5865f2&label=&logo=discord&logoColor=ffffff)](https://discord.gg/WMwWetrzuh)
+Also check out the [original repo](https://github.com/VOICEVOX/voicevox). Its README is a reccomended read.
 
-[VOICEVOX](https://voicevox.hiroshiba.jp/) のエディターです。
+## What is this?
 
-（エンジンは [VOICEVOX ENGINE](https://github.com/VOICEVOX/voicevox_engine/) 、
-コアは [VOICEVOX CORE](https://github.com/VOICEVOX/voicevox_core/) 、
-全体構成は [こちら](./docs/全体構成.md) に詳細があります。）
+*This is a personal fork of VOICEVOX that implements an English-localized interface.*
 
-## ユーザーの方へ
+The original VOICEVOX frontend was not developed with internationalization in mind. To make this localization work, display strings on the original code are replaced with function calls that point to a string via a localization key. Other text (especially ones that are fetched from a remote server) are instead translated via a brute-force find-and-replace routine. There are also some small CSS modifications in place to fit the new text.
 
-こちらは開発用のページになります。利用方法に関しては[VOICEVOX 公式サイト](https://voicevox.hiroshiba.jp/) をご覧ください。
+Sadly, this fork doesn't use any standard internationalization / localization libraries (like Vue-i18n). Still, this project should still be able to provide strings that may be reused into i18n-based forks, if not the development of localization support in the main VOICEVOX app itself.
 
-## プロジェクトに貢献したいと考えている方へ
+Feel free to use this work. Contributions are also welcome :)
 
-VOICEVOXプロジェクトは興味ある方の参画を歓迎しています。
-[貢献手順について説明したガイド](./CONTRIBUTING.md)をご用意しております。
+## Build / Test Prep (for Debian Linux)
 
-貢献というとプログラム作成と思われがちですが、ドキュメント執筆、テスト生成、改善提案への議論参加など様々な参加方法があります。
-初心者歓迎タスクもありますので、皆様のご参加をお待ちしております。
+- Get a release of the [VOICEVOX Engine](https://github.com/VOICEVOX/voicevox_engine/releases) for your specific platform.
+- Ensure that the `git`, `curl`, and `build-essential` Debian packages are installed.
+- Use version `24.11.1` of Node.js (use of `nvm` is recommended).
+- Install the `pnpm` npm package:
+  ```bash
+  npm i -g pnpm
+  ```
+- Clone this repo and install its dependencies:
+  ```bash
+  cd voicevox
+  pnpm i
+  ```
+- Ensure that a proper, configured `.env` exists (see the section below for more info). This also involves setting up the VOICEVOX Engine, a separate component not included in this repo.
 
-VOICEVOX のエディタは Electron・TypeScript・Vue・Vuex などが活用されており、全体構成がわかりにくくなっています。  
-[コードの歩き方](./docs/コードの歩き方.md)で構成を紹介しているので、開発の一助になれば幸いです。
+## Setting up `.env`
 
-Issue を解決するプルリクエストを作成される際は、別の方と同じ Issue に取り組むことを避けるため、
-Issue 側で取り組み始めたことを伝えるか、最初に Draft プルリクエストを作成してください。
+To get started on a quick configuration, make a copy of `.env.example` named `.env`.
 
-[VOICEVOX 非公式 Discord サーバー](https://discord.gg/WMwWetrzuh)にて、開発の議論や雑談を行っています。気軽にご参加ください。
+Edit the `.env` file with a text editor and set `executionFilePath` to point to the `run` / `run.exe` executable file in your copy of the VOICEVOX Engine release.
 
-### デザインガイドライン
+YOU MAY NEED TO SET EXECUTION PERMISSION FOR THE `run` BINARY WHEN USING LINUX.
 
-[UX・UI デザインの方針](./docs/UX・UIデザインの方針.md)をご参照ください。
+## Running / Building
 
-## 環境構築
+**Run**: `pnpm run electron:serve`
 
-[.node-version](.node-version) に記載されているバージョンの Node.js をインストールしてください。  
-Node.js の管理ツール（[nvs](https://github.com/jasongin/nvs)や[Volta](https://volta.sh)など）を利用すると簡単にインストールでき、Node.js の自動切り替えもできます。
+**Build**: `pnpm run electron:build`
 
-Node.js をインストール後、[このリポジトリ](https://github.com/VOICEVOX/voicevox.git) を Fork して `git clone` してください。
+*(Note, further configuration may be necessary to yield a build that bundles the VOICEVOX Engine. For builds that lack the VOICEVOX Engine, you may instead launch the VOICEVOX Engine executable separately from the VOICEVOX app.)*
 
-### 依存ライブラリをインストールする
-
-次のコマンドを実行することで依存ライブラリがインストール・アップデートされます。
-
-```bash
-npm i -g pnpm # 初回のみ
-pnpm i
+**Stuff to deal with before committing / opening a Pull Request**: 
+```log
+pnpm run fmt         # auto-format
+pnpm run lint        # static analysis
+pnpm run typecheck   # TS type check
 ```
 
-### AI エージェントのセットアップ（任意）
+## Other things of note
 
-次のコマンドを実行することで、Codex CLI や Claude Code などの AI エージェント用のファイルがセットアップされます。
+- Expect the version `0.25.2-hcmod-dev` when building from this (main) branch. 
 
-```bash
-pnpm run setup-agents
+</br></br></br>
+
+# Dev notes
+## List of added src | public files
+- `src/hc-strings.ts` core utility
+- `public/hc-locale/en.yaml` locale file with strings
+- `src/backend/electron/renderer/hc-mutation-observer.js` DOM mutation observer for find-and-replace routine
+
+## List of src files with non-string replacement modification
+- `src/main.ts` modified to load locale at early runtime
+- `src/backend/electron/renderer/preload.ts` imports hc-mutation-observer to trigger side effects
+- `src/vite.config.ts` modified to include a plugin that allows the locale to be reloaded when modified during test runtime
+
+</br>
+
+# Localization Guide
+
+*For the ones who wants to try their hand in replacing hardcoded strings.*
+
+## Setup
+
+Add this import to any TypeScript file or Vue `<script setup>` that needs localization:
+
+```ts
+import { t } from '@/hc-strings'; // hc-voicevox string localization
 ```
 
-## 実行
+## Usage
 
-### エンジンの準備
+Replace hardcoded strings with `t('your.locale.key')`. The function returns the string value for the current locale, or falls back to the key itself if no match is found.
 
-`.env.example`をコピーして`.env`を作成し、`VITE_DEFAULT_ENGINE_INFOS`内の`executionFilePath`に
-[製品版 VOICEVOX](https://voicevox.hiroshiba.jp/) 内の`vv-engine/run.exe`を指定すれば動きます。
-
-Windows でインストール先を変更していない場合は`%LOCALAPPDATA%/Programs/VOICEVOX/vv-engine/run.exe`を指定してください。  
-パスの区切り文字は`\`ではなく`/`なのでご注意ください。
-
-macOS 向けの`VOICEVOX.app`を利用している場合は`/path/to/VOICEVOX.app/Contents/Resources/vv-engine/run`を指定してください。
-
-Linux の場合は、[Releases](https://github.com/VOICEVOX/voicevox/releases/)から入手できる tar.gz 版に含まれる`vv-engine/run`コマンドを指定してください。
-AppImage 版の場合は`$ /path/to/VOICEVOX.AppImage --appimage-mount`でファイルシステムをマウントできます。
-
-VOICEVOX エディタの実行とは別にエンジン API のサーバを立てている場合は`executionFilePath`を指定する必要はありませんが、
-代わりに`executionEnabled`を`false`にしてください。
-これは製品版 VOICEVOX を起動している場合もあてはまります。
-
-エンジン API の宛先エンドポイントを変更する場合は`VITE_DEFAULT_ENGINE_INFOS`内の`host`を変更してください。
-
-### Electron の実行
-
-```bash
-# 開発しやすい環境で実行
-pnpm run electron:serve
-
-# ビルド時に近い環境で実行
-pnpm run electron:serve --mode production
-
-# 引数を指定して実行
-pnpm run electron:serve -- ...
+In script/expression context:
+```ts
+t('your.locale.key') 
 ```
 
-音声合成エンジンのリポジトリはこちらです <https://github.com/VOICEVOX/voicevox_engine>
-
-### Storybook の実行
-
-Storybook を使ってコンポーネントを開発することができます。
-
-```bash
-pnpm run storybook
+In HTML template body (interpolation):
+```html
+<p>{{ t('your.locale.key') }}</p>
 ```
 
-main ブランチの Storybook は[VOICEVOX/preview-pages](https://github.com/VOICEVOX/preview-pages)から確認できます。  
-<https://voicevox.github.io/preview-pages/preview/editor/branch-main/storybook/index.html>
-
-### ブラウザ版の実行（開発中）
-
-別途音声合成エンジンを起動し、以下を実行して表示された localhost へアクセスします。
-
-```bash
-pnpm run browser:serve
+In Vue template attributes, prefix with `:` to treat the value as a JS expression:
+```html
+<QInput :label="t('singing_interface.tempo_label')" />
 ```
+(without `:`, the raw string `"t('...')"` is passed literally)
 
-また、main ブランチのビルド結果が[VOICEVOX/preview-pages](https://github.com/VOICEVOX/preview-pages)にデプロイされています。  
-<https://voicevox.github.io/preview-pages/preview/editor/branch-main/editor/index.html>  
-今はローカル PC 上で音声合成エンジンを起動する必要があります。
+You may preserve the original hardcoded string as a comment for reference.
 
-## ビルド
+## Key Naming Conventions
 
-```bash
-pnpm run electron:build
-```
+Use the following prefixes as a guide. When no precedent exists, use your best judgment — just keep the namespacing sensible.
 
-### Github Actions でビルド
+| Prefix | Scope |
+|---|---|
+| `action.` | Strings that appear in both the menu bar **and** elsewhere (e.g. context menus) |
+| `menu_bar.` | Strings that appear **only** in the menu bar |
+| `context.` | Strings that appear **only** in right-click / context menus |
+| `window_title.` | Window titles |
+| `dialog.` | Prompt and dialog body text |
+| `logging.` | Strings used only for logging (not shown in UI) |
+| `singing_interface.` | Strings for the SING interface |
+| `talking_interface.` | Strings for the TALK interface |
+| `general.` | Strings for both the UI and the non-UI side |
 
-fork したリポジトリで Actions を ON にし、workflow_dispatch で`build.yml`を起動すればビルドできます。
-成果物は Release にアップロードされます。
+The source file name, location, or scope/closure can also serve as a useful prefix hint.
 
-## テスト
-
-### 単体テスト
-
-`./tests/unit/` 以下にあるテストと、Storybookのテストを実行します。
-
-```bash
-pnpm run test:unit
-pnpm run test-watch:unit # 監視モード
-pnpm run test-ui:unit # VitestのUIを表示
-pnpm run test:unit --update # スナップショットの更新
-```
-
-> [!NOTE]  
-> `./tests/unit` 下のテストは、ファイル名によってテストを実行する環境が変化します。
->
-> - `.node.spec.ts`：Node.js 環境
-> - `.browser.spec.ts`：ブラウザ環境（Chromium）
-> - `.spec.ts`：ブラウザ環境（happy-domによるエミュレート）
-
-### ブラウザ End to End テスト
-
-Electron の機能が不要な、UI や音声合成などの End to End テストを実行します。
-
-> [!NOTE]
-> 一部のエンジンの設定を書き換えるテストは、CI(Github Actions)上でのみ実行されるようになっています。
-
-```bash
-pnpm run test:browser-e2e
-pnpm run test-watch:browser-e2e # 監視モード
-pnpm run test-watch:browser-e2e --headed # テスト中の UI を表示
-pnpm run test-ui:browser-e2e # Playwright の UI を表示
-```
-
-Playwright を使用しているためテストパターンを生成することもできます。
-**ブラウザ版を起動している状態で**以下のコマンドを実行してください。
-
-```bash
-pnpm exec playwright codegen http://localhost:5173/ --viewport-size=1024,630
-```
-
-詳細は [Playwright ドキュメントの Test generator](https://playwright.dev/docs/codegen-intro) を参照してください。
-
-### Storybook の Visual Regression Testing
-
-Storybook のコンポーネントのスクリーンショットを比較して、変更がある場合は差分を表示します。
-
-> [!NOTE]
-> このテストは Windows でのみ実行できます。
-
-```bash
-pnpm run test:storybook-vrt
-pnpm run test-watch:storybook-vrt # 監視モード
-pnpm run test-ui:storybook-vrt # Playwright の UI を表示
-```
-
-#### スクリーンショットの更新
-
-ブラウザ End to End テストと Storybook では Visual Regression Testing を行っています。
-現在 VRT テストは Windows のみで行っています。
-以下の手順でスクリーンショットを更新できます：
-
-##### Github Actions で更新する場合
-
-1. フォークしたリポジトリの設定で GitHub Actions を有効にします。
-2. リポジトリの設定の Actions > General > Workflow permissions で Read and write permissions を選択します。
-3. GitHub の Actions タブから「Test」ワークフローを選択し、「Run workflow」をクリックします。
-4. 更新したいブランチを選択し、「スナップショットを更新する」にチェックを入れて実行します。
-
-   gh コマンドでも実行できます。
-
-   ```bash
-   gh workflow run test.yml -R (ユーザー名)/voicevox --ref (ブランチ名) -f update_snapshots=true
-   ```
-
-5. Github Workflow が完了すると、更新されたスクリーンショットがコミットされます。
-6. プルした後、空コミットをプッシュしてテストを再実行します。
-
-   ```bash
-   git commit --allow-empty -m "（テストを再実行）"
-   git push
-   ```
-
-> [!NOTE]
-> トークンを作成して Secrets に追加することで、自動的にテストを再実行できます。
->
-> 1. [Fine-granted Tokens](https://github.com/settings/personal-access-tokens/new) にアクセスします。
-> 2. 適当な名前を入力し、 `ユーザー名/voicevox` へのアクセス権を与え、 Repository permissions の Contents で Read and write を選択します。
->    <details>
->    <summary>設定例</summary>
->    <img src="./docs/res/Fine-granted_Tokensの作成.png" width="320" alt="">
->    </details>
-> 3. トークンを作成して文字列をコピーします。
-> 4. `ユーザー名/voicevox` のリポジトリの Settings > Secrets and variables > Actions > New repository secret を開きます。
-> 5. 名前に `PUSH_TOKEN` と入力し、先ほどの文字列を貼り付けて Secrets を追加します。
-
-##### ローカルで更新する場合
-
-ローカル PC の OS に対応したもののみが更新されます。
-
-```bash
-pnpm run test:browser-e2e --update-snapshots
-```
-
-### Electron End to End テスト
-
-Electron の機能が必要な、エンジン起動・終了などを含めた End to End テストを実行します。
-
-```bash
-pnpm run test:electron-e2e
-pnpm run test-watch:electron-e2e # 監視モード
-```
-
-## 依存ライブラリのライセンス情報の生成
-
-依存ライブラリのライセンス情報は Github Workflow でのビルド時に自動生成されます。以下のコマンドで生成できます。
-
-```bash
-# get licenses.json from voicevox_engine as engine_licenses.json
-
-pnpm run license:generate -o voicevox_licenses.json
-pnpm run license:merge -o public/licenses.json -i engine_licenses.json -i voicevox_licenses.json
-```
-
-## コードフォーマット
-
-コードのフォーマットを整えます。プルリクエストを送る前に実行してください。
-
-```bash
-pnpm run fmt
-```
-
-## リント（静的解析）
-
-コードの静的解析を行い、バグを未然に防ぎます。プルリクエストを送る前に実行してください。
-
-```bash
-pnpm run lint
-```
-
-リントを行うとリポジトリルートにキャッシュファイル`.eslintcache`が作られます。
-ESLintがバージョンアップした場合や、設定が変わった場合、キャッシュが壊れた場合はこのファイルを消してください。
-
-## タイポチェック
-
-[typos](https://github.com/crate-ci/typos) を使ってタイポのチェックを行っています。
-
-```bash
-pnpm run typos
-```
-
-でタイポチェックを行えます。
-もし誤判定やチェックから除外すべきファイルがあれば
-[設定ファイルの説明](https://github.com/crate-ci/typos#false-positives) に従って`_typos.toml`を編集してください。
-
-## 型チェック
-
-TypeScript の型チェックを行います。
-
-```bash
-pnpm run typecheck
-```
-
-## Markdownlint
-
-Markdown の文法チェックを行います。
-
-```bash
-pnpm run markdownlint
-```
-
-## Shellcheck
-
-ShellScript の文法チェックを行います。
-インストール方法は [こちら](https://github.com/koalaman/shellcheck#installing) を参照してください。
-
-```bash
-shellcheck ./build/*.sh
-shellcheck ./tools/*.bash
-```
-
-## GitHub Actions のバージョン固定
-
-[pinact](https://github.com/suzuki-shunsuke/pinact) を使って GitHub Actions のバージョンを full-length commit SHA に固定しています。
-
-```bash
-# バージョンを固定する
-pinact run
-
-# バージョンを更新して固定する
-pinact run --update --min-age 7
-```
-
-## OpenAPI generator
-
-[開発版のVOICEVOX ENGINE](https://github.com/voicevox/voicevox_engine)が起動している状態で以下のコマンドを実行してください。
-
-```bash
-pnpm run generate-openapi
-```
-
-### OpenAPI generator のバージョンアップ
-
-新しいバージョンの確認・インストールは次のコマンドで行えます。
-
-```bash
-pnpm exec openapi-generator-cli version-manager list
-```
-
-## VS Code でのデバッグ実行
-
-npm scripts の `serve` や `electron:serve` などの開発ビルド下では、ビルドに使用している vite で sourcemap を出力するため、ソースコードと出力されたコードの対応付けが行われます。
-
-`.vscode/launch.template.json` をコピーして `.vscode/launch.json` を、
-`.vscode/tasks.template.json` をコピーして `.vscode/tasks.json` を作成することで、
-開発ビルドを VS Code から実行し、デバッグを可能にするタスクが有効になります。
-
-## ライセンス
-
-LGPL v3 と、ソースコードの公開が不要な別ライセンスのデュアルライセンスです。
-別ライセンスを取得したい場合は、ヒホに求めてください。  
-X アカウント: [@hiho_karuta](https://x.com/hiho_karuta)
+> **Warning: do not localize `name` keys in objects.**
+> Many of VOICEVOX's `name` keys double as enums — certain parts of the codebase expect them to hold specific literal values. Replacing them will break things.
