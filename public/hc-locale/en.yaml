@@ -35,7 +35,7 @@ action.create_new_project: Create New Project
 action.save_project: Save Project
 action.save_project_as: Save Project As
 action.save_project_copy: Save A Copy
-action.import_project: Import Project
+action.open_project: Open Project
 
 # View
 action.toggle_fullscreen: Toggle Fullscreen
@@ -48,7 +48,8 @@ action.show_character_portrait: Show Character Portrait
 # Edit
 action.undo: Undo
 action.redo: Redo
-action.set_selected_audio_keys: Select All
+action.select_all: Select All
+
 action.copy_notes: Copy # song musical notes
 action.cut_notes: Cut # song musical notes
 action.paste_notes: Paste # song musical notes
@@ -62,6 +63,9 @@ action.export_song: Render/Export Project
 action.export_song_labels: Export Labels (.lab)
 action.export_song_other: Export As Other Format
 action.import_song_other: Import Other Project # pertaining to projects made in other software
+
+# Engine
+action.restart_engine: Restart Engine
 
 # ============================================================
 # SINGING INTERFACE

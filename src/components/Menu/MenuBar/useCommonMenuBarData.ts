@@ -5,6 +5,7 @@ import { ensureNotNullish } from "@/type/utility";
 import { useHotkeyManager, type HotkeyAction } from "@/plugins/hotkeyPlugin";
 import type { Store } from "@/store";
 import { isProduction } from "@/helpers/platform";
+import { t } from '@/hc-strings'; // hc-voicevox string localization
 
 export const useCommonMenuBarData = (store: Store) => {
   const uiLocked = computed(() => store.getters.UI_LOCKED);
@@ -80,7 +81,8 @@ export const useCommonMenuBarData = (store: Store) => {
         ? [
             {
               type: "button",
-              label: "最近使ったプロジェクトはありません",
+              //label: "最近使ったプロジェクトはありません",
+              label: t("recent_projects.no_recent_projects"),
               onClick: () => {
                 // 何もしない
               },
@@ -164,13 +166,15 @@ export const useCommonMenuBarData = (store: Store) => {
       project: [
         {
           type: "button",
-          label: "新規プロジェクト",
+          //label: "新規プロジェクト",
+          label: t("action.create_new_project"),
           onClick: createNewProject,
           disableWhenUiLocked: true,
         },
         {
           type: "button",
-          label: "プロジェクトを上書き保存",
+          //label: "プロジェクトを上書き保存",
+          label: t("action.save_project"),
           onClick: async () => {
             await saveProject();
           },
@@ -178,7 +182,8 @@ export const useCommonMenuBarData = (store: Store) => {
         },
         {
           type: "button",
-          label: "プロジェクトを名前を付けて保存",
+          //label: "プロジェクトを名前を付けて保存",
+          label: t("action.save_project_as"),
           onClick: async () => {
             await saveProjectAs();
           },
@@ -186,7 +191,8 @@ export const useCommonMenuBarData = (store: Store) => {
         },
         {
           type: "button",
-          label: "プロジェクトの複製を保存",
+          //label: "プロジェクトの複製を保存",
+          label: t("action.save_project_copy"),
           onClick: async () => {
             await saveProjectCopy();
           },
@@ -194,7 +200,8 @@ export const useCommonMenuBarData = (store: Store) => {
         },
         {
           type: "button",
-          label: "プロジェクトを読み込む",
+          //label: "プロジェクトを読み込む",
+          label: t("action.open_project"),
           onClick: () => {
             importProject();
           },
@@ -202,7 +209,8 @@ export const useCommonMenuBarData = (store: Store) => {
         },
         {
           type: "root",
-          label: "最近使ったプロジェクト",
+          //label: "最近使ったプロジェクト",
+          label: t("recent_projects.menu_label"),
           disableWhenUiLocked: true,
           subMenu: recentProjectsSubMenuData.value,
         },
@@ -213,7 +221,8 @@ export const useCommonMenuBarData = (store: Store) => {
       undoRedo: [
         {
           type: "button",
-          label: "元に戻す",
+          //label: "元に戻す",
+          label: t("action.undo"),
           onClick: async () => {
             if (!uiLocked.value) {
               await store.actions.UNDO({
@@ -226,7 +235,8 @@ export const useCommonMenuBarData = (store: Store) => {
         },
         {
           type: "button",
-          label: "やり直す",
+          //label: "やり直す",
+          label: t("action.redo"),
           onClick: async () => {
             if (!uiLocked.value) {
               await store.actions.REDO({
@@ -241,7 +251,8 @@ export const useCommonMenuBarData = (store: Store) => {
           ? [
               {
                 type: "button",
-                label: "すべて選択",
+                //label: "すべて選択",
+                label: t("action.select_all"),
                 onClick: async () => {
                   if (!uiLocked.value && isMultiSelectEnabled.value) {
                     await store.actions.SET_SELECTED_AUDIO_KEYS({
@@ -260,13 +271,15 @@ export const useCommonMenuBarData = (store: Store) => {
       window: [
         {
           type: "button",
-          label: "全画面表示を切り替え",
+          //label: "全画面表示を切り替え",
+          label: t("action.toggle_fullscreen"),
           onClick: toggleFullScreen,
           disableWhenUiLocked: false,
         },
         {
           type: "button",
-          label: "拡大",
+          //label: "拡大",
+          label: t("action.zoom_in"),
           onClick: () => {
             void zoomIn();
           },
@@ -274,7 +287,8 @@ export const useCommonMenuBarData = (store: Store) => {
         },
         {
           type: "button",
-          label: "縮小",
+          //label: "縮小",
+          label: t("action.zoom_out"),
           onClick: () => {
             void zoomOut();
           },
@@ -282,7 +296,8 @@ export const useCommonMenuBarData = (store: Store) => {
         },
         {
           type: "button",
-          label: "拡大率のリセット",
+          //label: "拡大率のリセット",
+          label: t("action.zoom_reset"),
           onClick: () => {
             void zoomReset();
           },
@@ -295,7 +310,8 @@ export const useCommonMenuBarData = (store: Store) => {
       subOptions: [
         {
           type: "button",
-          label: "キー割り当て",
+          //label: "キー割り当て",
+          label: t("hotkeys.menu_label"),
           onClick() {
             void store.actions.SET_DIALOG_OPEN({
               isHotkeySettingDialogOpen: true,
@@ -305,7 +321,8 @@ export const useCommonMenuBarData = (store: Store) => {
         },
         {
           type: "button",
-          label: "ツールバーのカスタマイズ",
+          //label: "ツールバーのカスタマイズ",
+          label: t("toolbar_settings.menu_label"),
           onClick() {
             void store.actions.SET_DIALOG_OPEN({
               isToolbarSettingDialogOpen: true,
@@ -317,7 +334,8 @@ export const useCommonMenuBarData = (store: Store) => {
           ? [
               {
                 type: "button",
-                label: "キャラクター＆スタイルの管理",
+                //label: "キャラクター＆スタイルの管理",
+                label: t("character_list.menu_label"),
                 onClick() {
                   void store.actions.SET_DIALOG_OPEN({
                     isCharacterListDialogOpen: true,
@@ -329,7 +347,8 @@ export const useCommonMenuBarData = (store: Store) => {
           : []),
         {
           type: "button",
-          label: "キャラクター並び替え・試聴",
+          //label: "キャラクター並び替え・試聴",
+          label: t("legacy_character_list.menu_label"),
           onClick() {
             void store.actions.SET_DIALOG_OPEN({
               isOldCharacterOrderDialogOpen: true,
@@ -339,7 +358,8 @@ export const useCommonMenuBarData = (store: Store) => {
         },
         {
           type: "button",
-          label: "デフォルトスタイル",
+          //label: "デフォルトスタイル",
+          label: t("legacy_default_style_menu.menu_label"),
           onClick() {
             void store.actions.SET_DIALOG_OPEN({
               isOldDefaultStyleSelectDialogOpen: true,
@@ -349,7 +369,8 @@ export const useCommonMenuBarData = (store: Store) => {
         },
         {
           type: "button",
-          label: "読み方＆アクセント辞書",
+          //label: "読み方＆アクセント辞書",
+          label: t("dictionary.menu_label"),
           onClick() {
             void store.actions.SET_DIALOG_OPEN({
               isDictionaryManageDialogOpen: true,
@@ -361,7 +382,8 @@ export const useCommonMenuBarData = (store: Store) => {
       options: [
         {
           type: "button",
-          label: "オプション",
+          //label: "オプション",
+          label: t("configuration.menu_label"),
           onClick() {
             void store.actions.SET_DIALOG_OPEN({
               isSettingDialogOpen: true,

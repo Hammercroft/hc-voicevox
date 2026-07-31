@@ -30,7 +30,7 @@ export const useElectronMenuBarData = (
       singleEngineSubMenuData = [
         {
           type: "button",
-          label: t("menuBar.engine.restartEngine"),
+          label: t("action.restart_engine"),
           onClick: () => {
             void store.actions.RESTART_ENGINES({
               engineIds: [engineIds.value[0]],
@@ -51,7 +51,7 @@ export const useElectronMenuBarData = (
           subMenu: removeNullableAndBoolean([
             !engineInfo.isDefault && {
               type: "button",
-              label: "フォルダを開く",
+              label: "フォルダを開く", // hc-voicevox TODO
               onClick: () => {
                 void store.actions.OPEN_ENGINE_DIRECTORY({
                   engineId: engineInfo.uuid,

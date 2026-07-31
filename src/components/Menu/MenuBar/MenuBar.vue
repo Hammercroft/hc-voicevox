@@ -38,6 +38,7 @@ import TitleBarButtons from "./TitleBarButtons.vue";
 import TitleBarEditorSwitcher from "./TitleBarEditorSwitcher.vue";
 import { useStore } from "@/store";
 import { getAppInfos } from "@/domain/appInfo";
+import { t } from '@/hc-strings'; // hc-voicevox string localization
 
 const props = defineProps<{
   /** メニューバーの全サブメニューデータ */
@@ -97,42 +98,48 @@ watch(titleText, (newTitle) => {
 const menudata = computed<(MenuItemButton | MenuItemRoot)[]>(() => [
   {
     type: "root",
-    label: "ファイル",
+    //label: "ファイル",
+    label: t("menu_bar.file"), // hc-voicevox string localization
     subMenu: props.subMenuData.file,
     disabled: props.subMenuData.file.length === 0,
     disableWhenUiLocked: false,
   },
   {
     type: "root",
-    label: "編集",
+    //label: "編集",
+    label: t("menu_bar.edit"), // hc-voicevox string localization
     subMenu: props.subMenuData.edit,
     disabled: props.subMenuData.edit.length === 0,
     disableWhenUiLocked: false,
   },
   {
     type: "root",
-    label: "表示",
+    //label: "表示",
+    label: t("menu_bar.view"), // hc-voicevox string localization
     subMenu: props.subMenuData.view,
     disabled: props.subMenuData.view.length === 0,
     disableWhenUiLocked: false,
   },
   {
     type: "root",
-    label: "エンジン",
+    //label: "エンジン",
+    label: t("menu_bar.engine"), // hc-voicevox string localization
     subMenu: props.subMenuData.engine,
     disabled: props.subMenuData.engine.length === 0,
     disableWhenUiLocked: false,
   },
   {
     type: "root",
-    label: "設定",
+    //label: "設定",
+    label: t("menu_bar.settings"), // hc-voicevox string localization
     subMenu: props.subMenuData.setting,
     disabled: props.subMenuData.setting.length === 0,
     disableWhenUiLocked: false,
   },
   {
     type: "button",
-    label: "ヘルプ",
+    //label: "ヘルプ",
+    label: t("menu_bar.help"), // hc-voicevox string localization
     onClick: () => {
       void store.actions.SET_DIALOG_OPEN({
         isHelpDialogOpen: true,
