@@ -13,6 +13,12 @@
 # Old source files
 /oldsrc
 
+# Stray VOICEVOX project files in repository root
+*.vvproj
+
+# VSCode stuff
+*.code-workspace
+
 ######################
 ######################
 ######################

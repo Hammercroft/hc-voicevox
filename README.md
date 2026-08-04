@@ -67,6 +67,7 @@ pnpm run typecheck   # TS type check
 - `src/main.ts` modified to load locale at early runtime
 - `src/backend/electron/renderer/preload.ts` imports hc-mutation-observer to trigger side effects
 - `src/vite.config.ts` modified to include a plugin that allows the locale to be reloaded when modified during test runtime
+- `src/components/Dialog/UpdateNotificationDialog/Presentation.vue` modified to include a reminder
 
 </br>
 

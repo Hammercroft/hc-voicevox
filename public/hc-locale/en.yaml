@@ -56,6 +56,7 @@ action.paste_notes: Paste # song musical notes
 action.select_all_notes_in_track: Select All # song musical notes
 action.deselect_all_notes: Deselect All # song musical notes
 action.quantize_selected_notes: Quantize Selection # song musical notes
+action.delete_selected_notes: Delete Selection # song musical notes
 
 # Export / Import
 ## song interface
@@ -80,6 +81,23 @@ singing_interface.loudness_label: Power # voice synthesis loudness/intensity; di
 singing_interface.tempo_label: BPM
 singing_interface.time_signature_label: Rhythm
 singing_interface.snap_type_select_label: Snap
+singing_interface.show_minutes_seconds: Show Minutes and Seconds
+singing_interface.show_measures_beats: Show Measures and Beats
+
+# ============================================================
+# DIALOG (modal windows as defined in src/components/dialogs)
+# ============================================================
+
+# Common dialog buttons
+common_dialog.close_button: Close
+
+# UpdateNotificationDialog
+update_notification_dialog.title: Update Available
+update_notification_dialog.text1: A new version of VOICEVOX is available. Would you like to download it?
+update_notification_dialog.text2: Version
+update_notification_dialog.hc_extra_text: (For a translated version of these notes, open the changelog in your browser and use its built-in translation feature.)
+update_notification_dialog.skip_this_version: Skip This Version
+update_notification_dialog.open_official_website: Visit Website
 
 # ============================================================
 # MISCELLANEOUS
@@ -102,6 +120,8 @@ legacy_character_list.menu_label: Character Arrangement
 legacy_default_style_menu.menu_label: Character Style Defaults
 dictionary.menu_label: Dictionary
 configuration.menu_label: Configuration
+cursor_tool.selection_tool_mode: Selection Tool # as found in the SING interface
+cursor_tool.draw_tool_mode: Note Drawing Tool # as found in the SING interface
 
 # keys with both UI and non-UI use...
 general.default_track_name: Unnamed Track # Used in track conversion / (de)serialization

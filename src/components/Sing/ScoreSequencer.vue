@@ -299,6 +299,7 @@ import type {
 } from "@/sing/sequencerStateMachine/common";
 import { useAutoScrollOnEdge } from "@/composables/useAutoScrollOnEdge";
 import { assertNonNullable } from "@/type/utility";
+import { t } from '@/hc-strings'; // hc-voicevox string localization
 
 const { warn } = createLogger("ScoreSequencer");
 const store = useStore();
@@ -1097,7 +1098,8 @@ const contextMenuData = computed<ContextMenuItemData[]>(() => {
       ? [
           {
             type: "button",
-            label: "選択優先ツール",
+            //label: "選択優先ツール",
+            label: t('cursor_tool.selection_tool_mode'),
             onClick: () => {
               contextMenu.value?.hide();
               void store.actions.SET_SEQUENCER_NOTE_TOOL({
@@ -1108,7 +1110,8 @@ const contextMenuData = computed<ContextMenuItemData[]>(() => {
           },
           {
             type: "button",
-            label: "編集優先ツール",
+            //label: "編集優先ツール",
+            label: t('cursor_tool.draw_tool_mode'),
             onClick: () => {
               contextMenu.value?.hide();
               void store.actions.SET_SEQUENCER_NOTE_TOOL({
@@ -1120,7 +1123,7 @@ const contextMenuData = computed<ContextMenuItemData[]>(() => {
           { type: "separator" },
         ]
       : [
-          {
+          {  // TODO hc-voicevox : find out what the oher two tools are for; check if the non-note mode is for editing curves
             type: "button",
             label: "ピッチ描画ツール",
             onClick: () => {
@@ -1147,7 +1150,8 @@ const contextMenuData = computed<ContextMenuItemData[]>(() => {
   const baseMenuItems: ContextMenuItemData[] = [
     {
       type: "button",
-      label: "コピー",
+      //label: "コピー",
+      label: t("action.copy_notes"),
       onClick: () => {
         contextMenu.value?.hide();
         void store.actions.COPY_NOTES_TO_CLIPBOARD();
@@ -1157,7 +1161,8 @@ const contextMenuData = computed<ContextMenuItemData[]>(() => {
     },
     {
       type: "button",
-      label: "切り取り",
+      //label: "切り取り",
+      label: t("action.cut_notes"),
       onClick: () => {
         contextMenu.value?.hide();
         void store.actions.COMMAND_CUT_NOTES_TO_CLIPBOARD();
@@ -1167,7 +1172,8 @@ const contextMenuData = computed<ContextMenuItemData[]>(() => {
     },
     {
       type: "button",
-      label: "貼り付け",
+      //label: "貼り付け",
+      label: t("action.paste_notes"),
       onClick: () => {
         contextMenu.value?.hide();
         void store.actions.COMMAND_PASTE_NOTES_FROM_CLIPBOARD();
@@ -1177,7 +1183,8 @@ const contextMenuData = computed<ContextMenuItemData[]>(() => {
     { type: "separator" },
     {
       type: "button",
-      label: "すべて選択",
+      //label: "すべて選択",
+      label: t("action.select_all_notes_in_track"),
       onClick: () => {
         contextMenu.value?.hide();
         void store.actions.SELECT_ALL_NOTES_IN_TRACK({
@@ -1188,7 +1195,8 @@ const contextMenuData = computed<ContextMenuItemData[]>(() => {
     },
     {
       type: "button",
-      label: "選択解除",
+      //label: "選択解除",
+      label: t("action.deselect_all_notes"),
       onClick: () => {
         contextMenu.value?.hide();
         void store.actions.DESELECT_ALL_NOTES();
@@ -1199,7 +1207,8 @@ const contextMenuData = computed<ContextMenuItemData[]>(() => {
     { type: "separator" },
     {
       type: "button",
-      label: "クオンタイズ",
+      //label: "クオンタイズ",
+      label: t("action.quantize_selected_notes"),
       onClick: () => {
         contextMenu.value?.hide();
         void store.actions.COMMAND_QUANTIZE_SELECTED_NOTES();
@@ -1210,7 +1219,8 @@ const contextMenuData = computed<ContextMenuItemData[]>(() => {
     { type: "separator" },
     {
       type: "button",
-      label: "削除",
+      //label: "削除",
+      label: t("action.delete_selected_notes"),
       onClick: () => {
         contextMenu.value?.hide();
         void store.actions.COMMAND_REMOVE_SELECTED_NOTES();

@@ -11,21 +11,23 @@
       />
       <CharacterMenuButton />
       <div class="sing-adjustment">
-        <QInput
+        <QInput 
           type="number"
           dense
           :modelValue="keyRangeAdjustment"
-          label="音域"
+          old_label="音域"
+          :label="t('singing_interface.timbre_label')"
           hideBottomSpace
           unelevated
           class="key-range-adjustment"
           @change="setKeyRangeAdjustment"
         />
-        <QInput
+        <QInput 
           type="number"
           dense
           :modelValue="volumeRangeAdjustment"
-          label="声量"
+          old_label="声量"
+          :label="t('singing_interface.loudness_label')"
           hideBottomSpace
           unelevated
           class="volume-range-adjustment"
@@ -39,7 +41,8 @@
         hideBottomSpace
         outlined
         unelevated
-        label="テンポ"
+        old_label="テンポ"
+        :label="t('singing_interface.tempo_label')"
         class="sing-tempo"
         padding="0"
         @change="setBpm"
@@ -48,7 +51,8 @@
         hideBottomSpace
         dense
         class="sing-time-signature-field"
-        label="拍子"
+        old_label="拍子"
+        :label="t('singing_interface.time_signature_label')"
         stackLabel
         outlined
       >
@@ -155,7 +159,8 @@
         optionsDense
         hideDropdownIcon
         unelevated
-        label="スナップ"
+        old_label="スナップ"
+        :label="t('singing_interface.snap_type_select_label')"
         transitionShow="none"
         transitionHide="none"
         class="sing-snap"
@@ -169,6 +174,7 @@ import { computed } from "vue";
 import PlayheadPositionDisplay from "../PlayheadPositionDisplay.vue";
 import EditTargetSwitcher from "./EditTargetSwitcher.vue";
 import { useStore } from "@/store";
+import { t } from '@/hc-strings'; // hc-voicevox string localization
 
 import {
   BEAT_TYPES,

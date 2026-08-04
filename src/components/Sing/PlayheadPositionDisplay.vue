@@ -25,6 +25,7 @@ import {
   ticksToMeasuresBeats,
 } from "@/sing/music";
 import { useRootMiscSetting } from "@/composables/useRootMiscSetting";
+import { t } from '@/hc-strings'; // hc-voicevox string localization
 
 const store = useStore();
 
@@ -92,7 +93,8 @@ const contextMenuData = computed<ContextMenuItemData[]>(() => {
   return [
     {
       type: "button",
-      label: "分:秒",
+      //label: "分:秒",
+      label: t("singing_interface.show_minutes_seconds"),
       disabled: displayFormat.value === "MINUTES_SECONDS",
       onClick: async () => {
         contextMenu.value?.hide();
@@ -102,7 +104,8 @@ const contextMenuData = computed<ContextMenuItemData[]>(() => {
     },
     {
       type: "button",
-      label: "小節.拍",
+      //label: "小節.拍",
+      label: t("singing_interface.show_measures_beats"),
       disabled: displayFormat.value === "MEASURES_BEATS",
       onClick: async () => {
         contextMenu.value?.hide();

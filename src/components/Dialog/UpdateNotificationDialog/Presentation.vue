@@ -2,10 +2,14 @@
   <QDialog v-model="dialogOpened">
     <QCard class="q-py-sm q-px-md dialog-card">
       <QCardSection>
-        <div class="text-h5">アップデートのお知らせ</div>
-        <div class="text-body2 text-grey-8">
+        <!--<div class="text-h5">アップデートのお知らせ</div>-->
+        <div class="text-h5">{{ t('update_notification_dialog.title') }}</div>
+        <!--<div class="text-body2 text-grey-8">
           公式サイトから最新バージョンをダウンロードできます。
-        </div>
+        </div>-->
+        <div class="text-body2 text-grey-8">
+          {{ t('update_notification_dialog.text1') }}
+        </div>  
       </QCardSection>
 
       <QSeparator />
@@ -15,7 +19,7 @@
           v-for="(info, infoIndex) of props.newUpdateInfos"
           :key="infoIndex"
         >
-          <h3>バージョン {{ info.version }}</h3>
+          <h3><!--バージョン-->{{ t('update_notification_dialog.text2') }} {{ info.version }}</h3>
           <ul>
             <template
               v-for="(item, descriptionIndex) of info.descriptions"
@@ -24,6 +28,7 @@
               <li>{{ item }}</li>
             </template>
           </ul>
+          <small><em>{{ t('update_notification_dialog.hc_extra_text') }}</em></small>
         </template>
       </QCardSection>
 
@@ -33,7 +38,8 @@
         <QSpace />
         <QBtn
           padding="xs md"
-          label="閉じる"
+          old_label="閉じる"
+          :label="t('common_dialog.close_button')"
           unelevated
           color="surface"
           textColor="display"
@@ -42,7 +48,8 @@
         />
         <QBtn
           padding="xs md"
-          label="このバージョンをスキップ"
+          old_label="このバージョンをスキップ"
+          :label="t('update_notification_dialog.skip_this_version')"
           unelevated
           color="surface"
           textColor="display"
@@ -54,7 +61,8 @@
         />
         <QBtn
           padding="xs md"
-          label="公式サイトを開く"
+          old_label="公式サイトを開く"
+          :label="t('update_notification_dialog.open_official_website')"
           unelevated
           color="primary"
           textColor="display-on-primary"
@@ -71,6 +79,7 @@
 
 <script setup lang="ts">
 import type { UpdateInfo } from "@/type/preload";
+import { t } from '@/hc-strings'; // hc-voicevox string localization
 
 const dialogOpened = defineModel<boolean>("dialogOpened", { default: false });
 const props = defineProps<{

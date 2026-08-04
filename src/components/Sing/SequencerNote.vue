@@ -77,6 +77,7 @@ import {
 import ContextMenu, {
   type ContextMenuItemData,
 } from "@/components/Menu/ContextMenu/Container.vue";
+import { t } from '@/hc-strings'; // hc-voicevox string localization
 
 const props = defineProps<{
   note: Note;
@@ -198,7 +199,8 @@ const contextMenuData = computed<ContextMenuItemData[]>(() => {
   return [
     {
       type: "button",
-      label: "コピー",
+      //label: "コピー",
+      label: t("action.copy_notes"),
       disabled: props.nowPreviewing,
       onClick: async () => {
         contextMenu.value?.hide();
@@ -208,7 +210,8 @@ const contextMenuData = computed<ContextMenuItemData[]>(() => {
     },
     {
       type: "button",
-      label: "切り取り",
+      //label: "切り取り",
+      label: t("action.cut_notes"),
       disabled: props.nowPreviewing,
       onClick: async () => {
         contextMenu.value?.hide();
@@ -219,7 +222,8 @@ const contextMenuData = computed<ContextMenuItemData[]>(() => {
     { type: "separator" },
     {
       type: "button",
-      label: "クオンタイズ",
+      //label: "クオンタイズ",
+      label: t("action.quantize_selected_notes"),
       disabled: props.nowPreviewing || !props.isSelected,
       onClick: async () => {
         contextMenu.value?.hide();
@@ -230,7 +234,8 @@ const contextMenuData = computed<ContextMenuItemData[]>(() => {
     { type: "separator" },
     {
       type: "button",
-      label: "削除",
+      //label: "削除",
+      label: t("action.delete_selected_notes"),
       disabled: props.nowPreviewing || !props.isSelected,
       onClick: async () => {
         contextMenu.value?.hide();
