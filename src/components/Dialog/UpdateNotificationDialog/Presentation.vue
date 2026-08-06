@@ -1,3 +1,15 @@
+<!-----------------------------------------------------------------------------
+
+This file is a modified version of code from VOICEVOX
+(https://github.com/VOICEVOX/voicevox), Copyright Hiroshiba Kazuyuki,
+licensed under the GNU Lesser General Public License v3.
+
+Modifications Copyright (C) 2026 Hammercroft.
+Changed:
+ - Swapped user-readable Japanese text with string lookups by localization key
+ - Added extra text reminding users to use a translator for the changelogs
+
+------------------------------------------------------------------------------>
 <template>
   <QDialog v-model="dialogOpened">
     <QCard class="q-py-sm q-px-md dialog-card">

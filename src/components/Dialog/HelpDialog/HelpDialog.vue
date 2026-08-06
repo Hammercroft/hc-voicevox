@@ -1,3 +1,13 @@
+<!--
+This file is a modified version of code from VOICEVOX
+(https://github.com/VOICEVOX/voicevox), Copyright Hiroshiba Kazuyuki,
+licensed under the GNU Lesser General Public License v3.
+
+Modifications Copyright (C) 2026 Hammercroft.
+Changed:
+ - Swapped user-readable Japanese text with string lookups by localization key
+-->
+
 <template>
   <QDialog
     v-model="dialogOpened"
@@ -86,6 +96,7 @@ import { useFetchNewUpdateInfos } from "@/composables/useFetchNewUpdateInfos";
 import { createLogger } from "@/helpers/log";
 import { getAppInfos } from "@/domain/appInfo";
 import type { OssLicenseInfo } from "@/domain/staticAssets";
+import {t} from "@/hc-strings.ts";
 
 type PageItem = {
   type: "item";
@@ -174,7 +185,8 @@ const pagedata = computed(() => {
     },
     {
       type: "item",
-      name: "ライセンス情報",
+      //name: "ライセンス情報",
+      name: t("app_license_page.title"),
       component: OssLicense,
       props: {
         licenses: licenses.value,

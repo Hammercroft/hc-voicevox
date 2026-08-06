@@ -1,3 +1,14 @@
+<!--
+This file is a modified version of code from VOICEVOX
+(https://github.com/VOICEVOX/voicevox), Copyright Hiroshiba Kazuyuki,
+licensed under the GNU Lesser General Public License v3.
+
+Modifications Copyright (C) 2026 Hammercroft.
+Changed:
+ - Swapped user-readable Japanese text with string lookups by localization key
+ - Alternate label styling
+-->
+
 <template>
   <div v-if="props.showSkeleton" class="selected-character">
     <QSkeleton class="character-avatar skeleton" type="QAvatar" size="36px" />

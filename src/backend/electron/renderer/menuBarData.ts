@@ -1,3 +1,15 @@
+/******************************************************************************
+
+This file is a modified version of code from VOICEVOX
+(https://github.com/VOICEVOX/voicevox), Copyright Hiroshiba Kazuyuki,
+licensed under the GNU Lesser General Public License v3.
+
+Modifications Copyright (C) 2026 Hammercroft.
+Changed:
+ - Swapped label string literal with a lookup to the text "Restart Engine"
+
+******************************************************************************/
+
 import { computed } from "vue";
 import { useEngineIcons } from "@/composables/useEngineIcons";
 import type {

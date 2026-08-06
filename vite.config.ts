@@ -1,3 +1,13 @@
+/**
+This file is a modified version of code from VOICEVOX
+(https://github.com/VOICEVOX/voicevox), Copyright Hiroshiba Kazuyuki,
+licensed under the GNU Lesser General Public License v3.
+
+Modifications Copyright (C) 2026 Hammercroft.
+Changed:
+ - Added a locale watch plugin
+*/
+
 /// <reference types="vitest" />
 import { execFileSync } from "node:child_process";
 import path from "node:path";

@@ -1,3 +1,16 @@
+<!-----------------------------------------------------------------------------
+
+This file is a modified version of code from VOICEVOX
+(https://github.com/VOICEVOX/voicevox), Copyright Hiroshiba Kazuyuki,
+licensed under the GNU Lesser General Public License v3.
+
+Modifications Copyright (C) 2026 Hammercroft.
+Changed:
+ - Swapped user-readable Japanese text with string lookups by localization key
+ - modified to change the style of the sidebar label
+
+------------------------------------------------------------------------------>
+
 <template>
   <div class="sidebar">
     <div class="tracks-header">

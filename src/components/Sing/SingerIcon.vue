@@ -1,3 +1,15 @@
+<!-----------------------------------------------------------------------------
+
+This file is a modified version of code from VOICEVOX
+(https://github.com/VOICEVOX/voicevox), Copyright Hiroshiba Kazuyuki,
+licensed under the GNU Lesser General Public License v3.
+
+Modifications Copyright (C) 2026 Hammercroft.
+Changed:
+ - Modified engine-icon style rule
+
+------------------------------------------------------------------------------>
+
 <template>
   <QAvatar size="3rem" v-bind="attr">
     <QImg noSpinner noTransition :ratio="1" :src="props.style.iconPath" />

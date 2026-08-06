@@ -1,3 +1,15 @@
+/******************************************************************************
+
+This file is a modified version of code from VOICEVOX
+(https://github.com/VOICEVOX/voicevox), Copyright Hiroshiba Kazuyuki,
+licensed under the GNU Lesser General Public License v3.
+
+Modifications Copyright (C) 2026 Hammercroft.
+Changed:
+ - import hc-mutation-observer to trigger side effects
+
+******************************************************************************/
+
 import { contextBridge, ipcRenderer, webUtils } from "electron";
 import {
   wrapToTransferableResult,

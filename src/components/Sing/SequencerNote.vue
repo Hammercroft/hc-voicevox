@@ -1,3 +1,15 @@
+<!-----------------------------------------------------------------------------
+
+This file is a modified version of code from VOICEVOX
+(https://github.com/VOICEVOX/voicevox), Copyright Hiroshiba Kazuyuki,
+licensed under the GNU Lesser General Public License v3.
+
+Modifications Copyright (C) 2026 Hammercroft.
+Changed:
+ - Swapped user-readable Japanese text with string lookups by localization key
+
+------------------------------------------------------------------------------>
+
 <template>
   <!-- 
    FIXME: z-indexの問題で複数ノート間が重なった際に歌詞が

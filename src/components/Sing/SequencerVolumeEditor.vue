@@ -97,7 +97,6 @@ import {
   type VolumeEditableFrameRange,
 } from "@/sing/volumeEditRanges";
 import type { VolumeEditorPointerInfo } from "@/sing/volumeEditorStateMachine/common";
-import { t } from '@/hc-strings'; // hc-voicevox string localization
 
 const props = defineProps<{
   viewportInfo: ViewportInfo;

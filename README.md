@@ -1,17 +1,14 @@
 # hc-voicevox / Hammercroft's English VOICEVOX
 
-Also check out the [original repo](https://github.com/VOICEVOX/voicevox). Its README is a reccomended read.
-
 ## What is this?
 
 *This is a personal fork of VOICEVOX that implements an English-localized interface.*
 
 The original VOICEVOX frontend was not developed with internationalization in mind. To make this localization work, display strings on the original code are replaced with function calls that point to a string via a localization key.
 
-Sadly, this fork doesn't use any standard internationalization / localization libraries (like Vue-i18n). Still, this project should still be able to provide strings that may be reused into i18n-based forks, if not the development of localization support in the main VOICEVOX app itself. Also, all tests are left unmaintained, and some modifications that are already in-place do cause certain tests to fail. As such, this fork is not to be used for PRs in the main VOICEVOX repository -- not until these features are moved to another fork with passing tests.
+Sadly, this fork doesn't use any standard internationalization / localization libraries (like Vue-i18n). Still, this project should still be able to provide strings that may be reused into i18n-based forks, if not the development of localization support in the main VOICEVOX app itself.
 
-The VOICEVOX app is an open-source project, and so is this fork.
-You are free to use this work under the terms of the LGPLv3 License. Contributions are also welcome :)
+Also check out the [original repo](https://github.com/VOICEVOX/voicevox). Its README is a reccomended read.
 
 ## Build / Test Prep (for Debian Linux)
 
@@ -56,6 +53,26 @@ pnpm run typecheck   # TS type check
 
 - Expect the version `0.25.2-hcmod-dev` when building from this (main) branch. 
 
+## Copyright and Disclaimer
+
+This project is a modified fork of Hiroshiba Kazuyuki's [VOICEVOX](https://github.com/VOICEVOX/voicevox).
+
+- **Original work:** Copyright © Hiroshiba Kazuyuki, VOICEVOX/voicevox contributors.
+  Licensed under the GNU Lesser General Public License v3.0 (LGPLv3). See
+  [`LGPL_LICENSE`](./LGPL_LICENSE) for the full license text.
+- **Modifications in this repository:** Copyright © 2026 Hammercroft.
+  Changes include, but are not limited to, English localization the VOICEVOX
+  interface, character/style name localization, and related UI/config adjustments.
+  See individual file headers and the commit history for details of what was changed.
+
+This is an unofficial, independently modified derivative of VOICEVOX and is not
+endorsed by or affiliated with the original VOICEVOX project or Hiroshiba Kazuyuki.
+All original trademarks, character names, and voice assets remain the property of
+their respective owners; no claim is made over them.
+
+Distribution of this modified version is provided under the same LGPLv3 terms as
+the original work, unless otherwise noted.
+
 </br></br></br>
 
 # Dev notes
@@ -71,7 +88,36 @@ pnpm run typecheck   # TS type check
 - `src/components/Dialog/UpdateNotificationDialog/Presentation.vue` modified to include a reminder
 - `src/components/Sing/SideBar/SideBar.vue` modified to change the style of the sidebar label
 - `src/components/Sing/CharacterMenuButton/CharacterSelectButton.vue` alternate style label styling + larger icons
-- `src/components/Sing/CharacterMenuButton/SelectedCharacter.vue` altertnate style label styling
+- `src/components/Sing/CharacterMenuButton/SelectedCharacter.vue` alternate style label styling
+
+## Modification notice header templates
+```js
+/******************************************************************************
+
+This file is a modified version of code from VOICEVOX
+(https://github.com/VOICEVOX/voicevox), Copyright Hiroshiba Kazuyuki,
+licensed under the GNU Lesser General Public License v3.
+
+Modifications Copyright (C) 2026 Hammercroft.
+Changed:
+ - Swapped user-readable Japanese text with string lookups by localization key
+
+******************************************************************************/
+```
+```html
+<!-----------------------------------------------------------------------------
+
+This file is a modified version of code from VOICEVOX
+(https://github.com/VOICEVOX/voicevox), Copyright Hiroshiba Kazuyuki,
+licensed under the GNU Lesser General Public License v3.
+
+Modifications Copyright (C) 2026 Hammercroft.
+Changed:
+ - Swapped user-readable Japanese text with string lookups by localization key
+
+------------------------------------------------------------------------------>
+```
+
 </br>
 
 # Localization Guide

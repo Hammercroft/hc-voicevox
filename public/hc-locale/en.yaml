@@ -92,7 +92,7 @@ singing_interface.solo_this_track: Solo This Track
 singing_interface.mute_this_track: Mute This Track
 
 # ============================================================
-# DIALOG (modal windows as defined in src/components/dialogs)
+# DIALOG / PAGES (modal windows or standalone pages as defined in src/components/dialogs)
 # ============================================================
 
 # Common dialog buttons
@@ -105,6 +105,10 @@ update_notification_dialog.text2: Version
 update_notification_dialog.hc_extra_text: (For a translated version of these notes, open the changelog in your browser and use its built-in translation feature.)
 update_notification_dialog.skip_this_version: Skip This Version
 update_notification_dialog.open_official_website: Visit Website
+
+# HelpOssLicenseSection
+app_license_page.title: Open Source Licenses
+
 
 # ============================================================
 # MISCELLANEOUS
@@ -146,7 +150,7 @@ general.default_track_name: Unnamed Track # Used in track conversion / (de)seria
 # ============================================================
 
 name_attribute.x: exampleattr
-
+ 
 # ============================================================
 # CHARACTER DATA
 #

@@ -1,3 +1,15 @@
+/******************************************************************************
+
+This file is a modified version of code from VOICEVOX
+(https://github.com/VOICEVOX/voicevox), Copyright Hiroshiba Kazuyuki,
+licensed under the GNU Lesser General Public License v3.
+
+Modifications Copyright (C) 2026 Hammercroft.
+Changed:
+ - Swapped user-readable Japanese text with string lookups by localization key
+
+******************************************************************************/
+
 import { computed, ref, watch } from "vue";
 import type { MenuItemData } from "../type";
 import type { MaybeComputedMenuBarContent } from "./menuBarData";
