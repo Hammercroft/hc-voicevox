@@ -89,6 +89,7 @@ the original work, unless otherwise noted.
 - `src/components/Sing/SideBar/SideBar.vue` modified to change the style of the sidebar label
 - `src/components/Sing/CharacterMenuButton/CharacterSelectButton.vue` alternate style label styling + larger icons
 - `src/components/Sing/CharacterMenuButton/SelectedCharacter.vue` alternate style label styling
+- `src/components/Dialog/HelpDialog/HelpOssLicenseSection.vue` added HelpOssLicenseSection entry for VOICEVOX itself before entries listed in public/licenses.json
 
 ## Modification notice header templates
 ```js

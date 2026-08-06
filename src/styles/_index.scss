@@ -1,3 +1,15 @@
+/******************************************************************************
+
+This file is a modified version of code from VOICEVOX
+(https://github.com/VOICEVOX/voicevox), Copyright Hiroshiba Kazuyuki,
+licensed under the GNU Lesser General Public License v3.
+
+Modifications Copyright (C) 2026 Hammercroft.
+Changed:
+ - Added Barlow and IBM Plex Sans JP as primary interface fonts
+
+******************************************************************************/
+
 @use "./variables" as vars;
 @use "./colors" as colors;
 @use "./v2/variables" as vars-v2;
@@ -21,7 +33,8 @@ body:not(#dummy) {
 }
 
 body[data-editor-font="default"] {
-  font-family: "Unhinted Rounded M+ 1p", sans-serif;
+  font-family: "Barlow", "IBM Plex Sans JP", "Unhinted Rounded M+ 1p",
+    sans-serif;
 }
 
 img {
