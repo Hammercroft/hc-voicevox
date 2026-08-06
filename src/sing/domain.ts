@@ -24,6 +24,7 @@ import { getDoremiFromNoteNumber } from "@/sing/viewHelper";
 import { ExhaustiveError } from "@/type/utility";
 import { getRepresentableNoteTypes, isValidNotes } from "@/sing/music";
 import { decibelToLinear } from "@/sing/audio";
+import { t } from '@/hc-strings'; // hc-voicevox string localization
 
 const MAX_SNAP_TYPE = 32;
 
@@ -40,7 +41,8 @@ export const isValidTrack = (track: Track) => {
   );
 };
 
-export const DEFAULT_TRACK_NAME = "無名トラック";
+//export const DEFAULT_TRACK_NAME = "無名トラック";
+export var DEFAULT_TRACK_NAME = t("general.default_track_name");
 
 export const DEFAULT_TPQN = 480;
 export const DEFAULT_BPM = 120;

@@ -83,6 +83,13 @@ singing_interface.time_signature_label: Rhythm
 singing_interface.snap_type_select_label: Snap
 singing_interface.show_minutes_seconds: Show Minutes and Seconds
 singing_interface.show_measures_beats: Show Measures and Beats
+singing_interface.add_track: Add Track
+singing_interface.duplicate_track: Duplicate Track
+singing_interface.delete_track: Delete Track
+singing_interface.track_list_bar_label: Tracks
+singing_interface.unsolo_all_tracks: Turn Off Solo for All Tracks
+singing_interface.solo_this_track: Solo This Track
+singing_interface.mute_this_track: Mute This Track
 
 # ============================================================
 # DIALOG (modal windows as defined in src/components/dialogs)
@@ -141,13 +148,191 @@ general.default_track_name: Unnamed Track # Used in track conversion / (de)seria
 name_attribute.x: exampleattr
 
 # ============================================================
-# DOM MUTATION REPLACEMENTS
+# CHARACTER DATA
 #
-# Intercepts and replaces strings injected into the DOM at
-# runtime — primarily character names and style labels sourced
-# from VOICEVOX's remote character database.
+# The strings here are not accessed via t().
+# Instead, use these functions:
+# - getLocalizedCharacterName
+# - getLocalizedCharacterStyleName
+# - getLocalizedGenericStyleName
 # ============================================================
 
-mutation_replacements:
-    # Characters
-    "波音リツ": "Namine Ritsu"
+# NOTE as of now, all the enumerated styles are ones that are usable on the SING interface.
+
+character_data:
+    __generic__:
+        localized_name: ~
+        localized_style_names:
+            "ノーマル": "Regular"
+            "あまあま": "Sweet"
+            "ツンツン": "Cold" # "tsun-tsun", Tsundere type
+            "セクシー": "Alluring" # "sexy"
+            "ささやき": "Whisper" # on-your-ear type whispering
+            "囁き": "Whisper" # ditto
+            "内緒話": "Whisper" # ditto
+            "ヒソヒソ": "Hushed" # lowered-voice / murmuring / gossip
+            "ヘロヘロ": "Tired"
+            "なみだめ": "Tearful"
+            "びえーん": "Tearful" 
+            "喜び": "Delighted" # tone of gratefulness
+            "おちつき": "Calm"
+    波音リツ:
+        localized_name: "Namine Ritsu"
+        localized_style_names: # due to how style labels are handled, there are two of what would become her "Regular" styles and we currently have no way to distinguish them...
+            "クイーン": "Queen"
+    雀松朱司:
+        localized_name: "Wakamatsu Akashi"
+        localized_style_names: {} # no styles at all
+    四国めたん:
+        localized_name: "Shikoku Metan" 
+        localized_style_names: {} # all covered by the generic style names
+    ずんだもん:
+        localized_name: "Zundamon"
+        localized_style_names: {}  # all covered by the generic style names
+    春日部つむぎ:
+        localized_name: "Kasukabe Tsumugi"
+        localized_style_names: {} # no styles at all
+    雨晴はう:
+        localized_name: "Amehare Hau"
+        localized_style_names: {} # no styles at all
+    玄野武宏:
+        localized_name: "Kurono Takehiro"
+        localized_style_names:
+            "ノーマル": "Normal"
+            "ツンギレ": "Serious" # key is literally "tsungire", but the style as heard from the western ear is interpreted as the more-broader tone of seriousness
+            "悲しみ": "Melancholy"
+    白上虎太郎:
+        localized_name: "Shirakami Kotarou"
+        localized_style_names:
+            "ふつう": "Ordinary"
+            "わーい": "Cheerful"
+            "おこ": "Cold"
+            "びくびく": "Timid"
+    青山龍星:
+        localized_name: "Aoyama Ryusei"
+        localized_style_names:
+            "熱血": "Enthusiastic" # lit. "hot-blooded"
+            "不機嫌": "Disgruntled"
+            "しっとり": "Soft" # "Shittori", the word itself can have multiple interpretations, and "Soft" matches this style well
+            "かなしみ": "Melancholy"
+    冥鳴ひまり:
+        localized_name: "Meimei Himari" 
+        localized_style_names: {} # no styles at all
+    九州そら:
+        localized_name: "Kyushu Sora"
+        localized_style_names: {} # covered by the generic style names
+    もち子さん:
+        localized_name: "Mochino Kyouko"
+        localized_style_names:
+            "セクシー／あん子": "Alluring"
+            "泣き": "Teary-eyed" # lit. "crying", though the shaky breathing associated with sobbing speech is subdued
+            "怒り": "Heavy" # key word has two interpretations, an anchor, or anger, and for this voice it is not the latter
+            "のんびり": "Tepid" # lit. "relaxed", plus the icon is an unenthusiastic jiangshi. 
+    剣崎雌雄:
+        localized_name: "Kenzaki Mesuo"
+        localized_style_names: {} # no styles at all
+    WhiteCUL:
+        localized_Name: "WhiteCUL"
+        localized_style_names:
+            "たのしい": "Cheerful" # lit. "fun", and indeed she sounds like she's having fun
+            "かなしい": "Somber"
+    後鬼:
+        localized_name: "Goki"
+        localized_style_names:
+            "人間ver.": "Human Version"
+            "ぬいぐるみver.": "Plushie Version"
+    "No.7":
+        localized_name: "No. 7"
+        localized_style_names:
+            "アナウンス": "Announcer's Voice"
+            "読み聞かせ": "Storyteller's Voice"
+    ちび式じい:
+        localized_name: "Chibi Shiki-Ji"
+        localized_style_names: {} # no styles at all
+    櫻歌ミコ:
+        localized_name: "Ooka Miko"
+        localized_style_names:
+            "第二形態": "Second Form"
+            "ロリ": "Little Miko" # lit. "Loli"
+    小夜/SAYO:
+        localized_name: "SAYO"
+        localized_style_names: {} # no styles at all
+    ナースロボ＿タイプＴ:
+        localized_name: "Nurse Robo Type T"
+        localized_style_names:
+            "楽々": "Friendly" # "rakuraku"
+            "恐怖": "Fearful"
+    †聖騎士 紅桜†:
+        localized_name: "Holy Knight Benizakura"
+        localized_style_names: {} # no styles at all
+    麒ヶ島宗麟:
+        localized_name: "Kigashima Sourin"
+        localized_style_names: {} # no styles at all
+    春歌ナナ:
+        localized_name: "Haruka Nana"
+        localized_style_names: {} # no styles at all
+    猫使アル:
+        localized_name: "Nekotsuka R" # Nekotsuka Aru
+        localized_style_names:
+            "うきうき": "Happy" # not sure if this should be generic
+    猫使ビィ:
+        localized_name: "Nekotsuka B" # Nekotsuka Bi
+        localized_style_names: {} # singing voice styles covered by the generic style names
+    中国うさぎ:
+        localized_name: "Chugoku Usagi"
+        localized_style_names:
+            "おどろき": "Surprised" # icon as clue
+            "こわがり": "Scared" # icon as clue
+            "へろへろ": "Tired"
+    栗田まろん:
+        localized_name: "Kurita Maron"
+        localized_style_names: {} # no styles at all
+    あいえるたん:
+        localized_name: "Aida Noelle"
+        localized_style_names: {} # no styles at all
+    満別花丸:
+        localized_name: "Manbetsu Hanamaru"
+        localized_style_names:
+            "元気": "Energetic Voice"
+            "ぶりっ子": "Cute Voice" # lit. acting cute
+            "ボーイ": "Deep Voice" # a more boyish voice
+    琴詠ニア:
+        localized_name: "Kotoyomi Nia"
+        localized_style_names: {} # no styles at all
+    # beyond this point are characters who were never made for VOICEVOX's singing synthesis mode
+    ぞん子:
+        localized_name: "ZONe-ko"
+        localized_style_names: {}
+    中部つるぎ:
+        localized_name: "Chubu Tsurugi"
+        localized_style_names: {}
+    離途:
+        localized_name: "Rito"
+        localized_style_names: {}
+    黒沢冴白:
+        localized_name: "Kurosawa Kohaku"
+        localized_style_names: {}
+    ユーレイちゃん:
+        localized_name: "Yuurei-chan"
+        localized_style_names: {}
+    東北ずん子:
+        localized_name: "Tohoku Zunko"
+        localized_style_names: {}
+    東北きりたん:
+        localized_name: "Tohoku Kiritan"
+        localized_style_names: {}
+    東北イタコ:
+        localized_name: "Tohoku Itako"
+        localized_style_names: {}
+    あんこもん:
+        localized_name: "Ankomon"
+        localized_style_names: {}
+    夜語トバリ:
+        localized_name: "Yogatari Tobari"
+        localized_style_names: {}
+    暁記ミタマ:
+        localized_name: "Akatsuki Mitama"
+        localized_style_names: {}
+    里石ユカ:
+        localized_name: "Satoishi Yuka"
+        localized_style_names: {}

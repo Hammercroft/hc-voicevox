@@ -1,7 +1,10 @@
 <template>
   <div class="sidebar">
     <div class="tracks-header">
-      トラック一覧
+      <!--トラック一覧-->
+      <span style="font-size: medium; font-weight: 900; text-transform: uppercase; text-align: center; display: block; opacity: 0.56;">
+        {{ t("singing_interface.track_list_bar_label") }}
+      </span>
       <QSpace />
       <QBtn
         v-show="tracks.size > 1"
@@ -15,7 +18,7 @@
         class="track-list-button"
         @click="deleteTrack"
       >
-        <QTooltip :delay="500">トラックを削除</QTooltip>
+        <QTooltip :delay="500"><!--トラックを削除-->{{ t("singing_interface.delete_track") }}</QTooltip>
       </QBtn>
       <QBtn
         color="default"
@@ -28,7 +31,7 @@
         class="track-list-button"
         @click="addTrack"
       >
-        <QTooltip :delay="500">トラックを追加</QTooltip>
+        <QTooltip :delay="500"><!--トラックを追加-->{{ t("singing_interface.add_track") }}</QTooltip>
       </QBtn>
       <QBtn
         color="default"
@@ -41,7 +44,7 @@
         class="track-list-button"
         @click="unsoloAllTracks"
       >
-        <QTooltip :delay="500">すべてのソロを解除</QTooltip>
+        <QTooltip :delay="500"><!--すべてのソロを解除-->{{ t("singing_interface.unsolo_all_tracks") }}</QTooltip>
       </QBtn>
     </div>
     <Draggable
@@ -67,6 +70,7 @@ import { QList } from "quasar";
 import TrackItem from "./TrackItem.vue";
 import { useStore } from "@/store";
 import type { TrackId } from "@/type/preload";
+import { t } from "@/hc-strings";
 
 // DraggableのコンテナにQListを使うための設定。
 // https://github.com/SortableJS/vue.draggable.next/issues/211#issuecomment-1718863764

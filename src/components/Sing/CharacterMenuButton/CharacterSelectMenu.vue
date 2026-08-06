@@ -37,7 +37,9 @@
               :showEngineIcon="isMultipleEngine"
               :engineIcons
             />
-            <div>{{ characterInfo.metas.speakerName }}</div>
+            <div><!--{{ characterInfo.metas.speakerName }}-->
+              {{ getLocalizedCharacterName(characterInfo.metas.speakerName) }}
+            </div>
           </QBtn>
 
           <!-- スタイルが2つ以上あるものだけ、スタイル選択ボタンを表示する-->
@@ -86,9 +88,18 @@
                       :engineIcons
                     />
                     <QItemSection v-if="style.styleName">
-                      {{ characterInfo.metas.speakerName }} ({{
-                        getStyleDescription(style)
-                      }})
+                      <!-- {{ characterInfo.metas.speakerName }}  -->
+                      <span>
+                        <bold>
+                        {{(
+                          getLocalizedCharacterStyleName(characterInfo.metas.speakerName, style.styleName,)
+                          ??
+                          getLocalizedGenericStyleName(style.styleName)
+                        )}}
+                        </bold>
+                        &nbsp;
+                        <small style="opacity: 0.5;">({{getStyleDescription(style)}})</small>
+                      </span>
                     </QItemSection>
                     <QItemSection v-else>{{
                       characterInfo.metas.speakerName
@@ -112,6 +123,7 @@ import type { SpeakerId, StyleId, TrackId } from "@/type/preload";
 import { getStyleDescription } from "@/sing/viewHelper";
 import SingerIcon from "@/components/Sing/SingerIcon.vue";
 import { useEngineIcons } from "@/composables/useEngineIcons";
+import { getLocalizedCharacterName, getLocalizedCharacterStyleName, getLocalizedGenericStyleName } from "@/hc-strings";
 
 defineOptions({
   name: "CharacterMenuButton",
@@ -223,10 +235,10 @@ const engineIcons = useEngineIcons(() => store.state.engineManifests);
   }
   .engine-icon {
     position: absolute;
-    width: 13px;
-    height: 13px;
-    bottom: -6px;
-    right: -6px;
+    width: 32px;
+    height: 32px;
+    bottom: -2px;
+    right: -2px;
   }
 }
 </style>

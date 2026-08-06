@@ -22,10 +22,20 @@
     </QAvatar>
     <div class="character-info">
       <div class="character-name">
-        {{ selectedCharacterName }}
+        <!--{{ selectedCharacterName }}-->
+         {{ getLocalizedCharacterName(selectedCharacterName) }}
       </div>
       <div class="character-style">
-        {{ selectedCharacterStyleDescription }}
+        <!--{{ selectedCharacterStyleDescription }}-->
+         <bold>
+          {{ (
+            getLocalizedCharacterStyleName(selectedCharacterName, selectedCharacterStyle.styleName,)
+            ??
+            getLocalizedGenericStyleName(selectedCharacterStyle.styleName)
+          ) }}
+        </bold>
+        &nbsp;
+        <small style="opacity: 0.5;">({{ selectedCharacterStyleDescription }})</small>
       </div>
     </div>
     <QIcon
@@ -41,6 +51,7 @@ import { computed } from "vue";
 import type { Singer } from "@/domain/project/type";
 import type { CharacterInfo } from "@/type/preload";
 import { getStyleDescription } from "@/sing/viewHelper";
+import { getLocalizedCharacterName, getLocalizedCharacterStyleName, getLocalizedGenericStyleName } from "@/hc-strings";
 
 const props = defineProps<{
   showSkeleton: boolean;
@@ -50,6 +61,14 @@ const props = defineProps<{
 
 const selectedCharacterName = computed(() => {
   return props.selectedCharacterInfo?.metas.speakerName;
+});
+const selectedCharacterStyle = computed(()=>{
+  return props.selectedCharacterInfo?.metas.styles.find((style) => {
+    return (
+      style.styleId === props.selectedSinger?.styleId &&
+      style.engineId === props.selectedSinger?.engineId
+    );
+  });
 });
 const selectedCharacterStyleDescription = computed(() => {
   const style = props.selectedCharacterInfo?.metas.styles.find((style) => {

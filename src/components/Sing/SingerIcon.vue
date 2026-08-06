@@ -1,5 +1,5 @@
 <template>
-  <QAvatar size="2rem" v-bind="attr">
+  <QAvatar size="3rem" v-bind="attr">
     <QImg noSpinner noTransition :ratio="1" :src="props.style.iconPath" />
     <QAvatar v-if="props.showEngineIcon" rounded class="engine-icon">
       <img :src="props.engineIcons[props.style.engineId]" />
@@ -28,9 +28,9 @@ const props = withDefaults(
 <style scoped lang="scss">
 .engine-icon {
   position: absolute;
-  width: 13px;
-  height: 13px;
-  bottom: -6px;
-  right: -6px;
+  width: 32px;
+  height: 32px;
+  bottom: -2px;
+  right: -2px;
 }
 </style>

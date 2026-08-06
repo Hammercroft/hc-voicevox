@@ -13,19 +13,22 @@
         :menudata="[
           {
             type: 'button',
-            label: 'トラック追加',
+            //label: 'トラック追加',
+            label: t('singing_interface.add_track'),
             onClick: addTrack,
             disableWhenUiLocked: true,
           },
           {
             type: 'button',
-            label: 'トラック複製',
+            //label: 'トラック複製',
+            label: t('singing_interface.duplicate_track'),
             onClick: duplicateTrack,
             disableWhenUiLocked: true,
           },
           {
             type: 'button',
-            label: 'トラック削除',
+            //label: 'トラック削除',
+            label: t('singing_interface.delete_track'),
             onClick: deleteTrack,
             disabled: tracks.size === 1,
             disableWhenUiLocked: true,
@@ -105,7 +108,7 @@
             :disable="uiLocked || isThereSoloTrack"
             @click.stop="setTrackMute(!track.mute)"
           >
-            <QTooltip :delay="500">ミュート</QTooltip>
+            <QTooltip :delay="500"><!--ミュート-->{{ t("singing_interface.mute_this_track") }}</QTooltip>
           </QBtn>
           <QBtn
             :color="track.solo ? 'primary' : 'default'"
@@ -121,7 +124,7 @@
             :disable="uiLocked"
             @click.stop="setTrackSolo(!track.solo)"
           >
-            <QTooltip :delay="500">ソロ</QTooltip>
+            <QTooltip :delay="500"><!--ソロ-->{{ t("singing_interface.solo_this_track") }}</QTooltip>
           </QBtn>
         </div>
       </QItemSection>
@@ -174,6 +177,7 @@ import { useStore } from "@/store";
 import ContextMenu from "@/components/Menu/ContextMenu/Container.vue";
 import { shouldPlayTracks } from "@/sing/domain";
 import type { CharacterInfo, StyleInfo, TrackId } from "@/type/preload";
+import {t} from "@/hc-strings"
 
 const props = defineProps<{
   trackId: TrackId;

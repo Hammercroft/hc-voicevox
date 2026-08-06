@@ -6,11 +6,12 @@ Also check out the [original repo](https://github.com/VOICEVOX/voicevox). Its RE
 
 *This is a personal fork of VOICEVOX that implements an English-localized interface.*
 
-The original VOICEVOX frontend was not developed with internationalization in mind. To make this localization work, display strings on the original code are replaced with function calls that point to a string via a localization key. Other text (especially ones that are fetched from a remote server) are instead translated via a brute-force find-and-replace routine. There are also some small CSS modifications in place to fit the new text.
+The original VOICEVOX frontend was not developed with internationalization in mind. To make this localization work, display strings on the original code are replaced with function calls that point to a string via a localization key.
 
-Sadly, this fork doesn't use any standard internationalization / localization libraries (like Vue-i18n). Still, this project should still be able to provide strings that may be reused into i18n-based forks, if not the development of localization support in the main VOICEVOX app itself.
+Sadly, this fork doesn't use any standard internationalization / localization libraries (like Vue-i18n). Still, this project should still be able to provide strings that may be reused into i18n-based forks, if not the development of localization support in the main VOICEVOX app itself. Also, all tests are left unmaintained, and some modifications that are already in-place do cause certain tests to fail. As such, this fork is not to be used for PRs in the main VOICEVOX repository -- not until these features are moved to another fork with passing tests.
 
-Feel free to use this work. Contributions are also welcome :)
+The VOICEVOX app is an open-source project, and so is this fork.
+You are free to use this work under the terms of the LGPLv3 License. Contributions are also welcome :)
 
 ## Build / Test Prep (for Debian Linux)
 
@@ -68,7 +69,9 @@ pnpm run typecheck   # TS type check
 - `src/backend/electron/renderer/preload.ts` imports hc-mutation-observer to trigger side effects
 - `src/vite.config.ts` modified to include a plugin that allows the locale to be reloaded when modified during test runtime
 - `src/components/Dialog/UpdateNotificationDialog/Presentation.vue` modified to include a reminder
-
+- `src/components/Sing/SideBar/SideBar.vue` modified to change the style of the sidebar label
+- `src/components/Sing/CharacterMenuButton/CharacterSelectButton.vue` alternate style label styling + larger icons
+- `src/components/Sing/CharacterMenuButton/SelectedCharacter.vue` altertnate style label styling
 </br>
 
 # Localization Guide
@@ -120,6 +123,8 @@ Use the following prefixes as a guide. When no precedent exists, use your best j
 | `singing_interface.` | Strings for the SING interface |
 | `talking_interface.` | Strings for the TALK interface |
 | `general.` | Strings for both the UI and the non-UI side |
+
+Further precedence can be seen in the `en.yaml` file itself
 
 The source file name, location, or scope/closure can also serve as a useful prefix hint.
 
